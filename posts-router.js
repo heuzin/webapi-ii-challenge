@@ -25,4 +25,17 @@ router.post('/', (req, res) => {
     }
 })
 
+router.get('/', (req, res) => {
+    Posts.find()
+    .then(posts => {
+        res.json(posts);
+    })
+    .catch(err => {
+        res.status(500).json({
+            err: error,
+            message: "The posts information could not be retrieved."
+        })
+    })
+}) 
+
 module.exports = router;
